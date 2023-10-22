@@ -5,6 +5,8 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(src/DataCollectors)
 
+add_subdirectory(Google_tests)
+
 add_executable(schedule
         src/ClassesStruct/ClassesPerUc.cpp
         src/ClassesStruct/ClassesPerUc.h
