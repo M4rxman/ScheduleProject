@@ -17,4 +17,5 @@ public:
     void AddElements(ClassesPerUc classesPerUc);
     void readFile(ifstream& f);
 };
+
 #endif //SCHEDULE_DATACOLLECTOR_H

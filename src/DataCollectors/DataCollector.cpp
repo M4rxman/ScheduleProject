@@ -6,6 +6,8 @@
 
 /// https://www.youtube.com/watch?v=JpAiTSnnCdc&ab_channel=Unwithered
 
+
+
 void ClassesPerUcCollector::AddElements(ClassesPerUc classesPerUc) {
     _classesPerUcData.insert(classesPerUc);
 }
@@ -21,3 +23,7 @@ void ClassesPerUcCollector::readFile(ifstream &f) {
        AddElements(info);
     }
 }
+
+/////////////////////
+
+
