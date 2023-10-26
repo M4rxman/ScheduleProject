@@ -12,8 +12,9 @@ class DataCollector {
 };
 
 class ClassesPerUcCollector : public DataCollector{
-    set<ClassesPerUc> _classesPerUcData;
+
 public:
+    set<ClassesPerUc> _classesPerUcData;
     void AddElements(ClassesPerUc classesPerUc);
     void readFile(ifstream& f);
 };
