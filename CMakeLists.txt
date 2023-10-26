@@ -15,4 +15,7 @@ add_executable(schedule
         src/DataCollectors/DataCollector.h
         src/DataCollectors/DataCollector.cpp
         src/main.cpp
+        src/DataCollectors/DataTest.cpp
+        src/ClassesStruct/StudentClasses.h
+        src/ClassesStruct/StudentClasses.cpp
 )
