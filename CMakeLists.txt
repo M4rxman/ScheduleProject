@@ -14,5 +14,5 @@ add_executable(schedule
         src/ClassesStruct/ClassesPerUc.h
         src/DataCollectors/DataCollector.h
         src/DataCollectors/DataCollector.cpp
-        src/DataCollectors/DataTest.cpp
+        src/main.cpp
 )
