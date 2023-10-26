@@ -6,27 +6,18 @@
 
 ClassesPerUc::ClassesPerUc() = default;
 ClassesPerUc::ClassesPerUc(string ucCode,string classCode){
-    SetClassCode(classCode);
     SetUcCode(ucCode);
 }
 
 string ClassesPerUc::GetUcCode() {
-    return _ucCode;
-}
-
-string ClassesPerUc::GetClassCode() {
-    return _classCode;
+    return ucCode;
 }
 
 void ClassesPerUc::SetUcCode(string ucCode) {
-    _ucCode = ucCode;
-}
-
-void ClassesPerUc::SetClassCode(string classCode) {
-    _classCode = classCode;
+    ucCode = ucCode;
 }
 
 bool ClassesPerUc::operator<(const ClassesPerUc &code) const {
-    return this->_ucCode < code._ucCode;
+    return this->ucCode < code.ucCode;
 }
 
