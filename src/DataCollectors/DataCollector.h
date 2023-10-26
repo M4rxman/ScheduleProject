@@ -3,7 +3,7 @@
 
 #include <set>
 #include <fstream>
-#include "../ClassesStruct/ClassesPerUc.h"
+#include "ClassesPerUc.h"
 
 using namespace std;
 

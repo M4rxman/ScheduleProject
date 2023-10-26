@@ -10,12 +10,13 @@ include_directories(google_tests/googletest-main/googlemock/include)
 add_subdirectory(google_tests/googletest-main)
 
 add_executable(schedule
-        src/ClassesStruct/ClassesPerUc.cpp
-        src/ClassesStruct/ClassesPerUc.h
+        src/DataCollectors/ClassesPerUc.cpp
+        src/DataCollectors/ClassesPerUc.h
         src/DataCollectors/DataCollector.h
         src/DataCollectors/DataCollector.cpp
         src/main.cpp
-        src/DataCollectors/DataTest.cpp
-        src/ClassesStruct/StudentClasses.h
-        src/ClassesStruct/StudentClasses.cpp
+        src/DataCollectors/StudentClasses.h
+        src/DataCollectors/StudentClasses.cpp
+        "src/ClassesStruct/UcCode.h"
+        src/ClassesStruct/UcCode.cpp
 )
