@@ -38,18 +38,18 @@ void ClassesPerUc::readFile(ifstream &f) {
 }
 
 void ClassesPerUc::addClassesToUc(string classCode, string ucCode) {
-    // Iterate through the list of UcCode objects
+    // Iterate through the list of UcCodeClassCode objects
     for (auto it = cPerUc.begin(); it != cPerUc.end(); ++it) {
-        // Check if the ucCode of the current UcCode object matches the provided ucCode
+        // Check if the ucCode of the current UcCodeClassCode object matches the provided ucCode
         if (it->GetUcCode() == ucCode) {
-            // If it matches, add the classCode to the UcCode object
+            // If it matches, add the classCode to the UcCodeClassCode object
             it->addClassCode(classCode);
             return; // Exit the loop once class code is added
         }
     }
 
-    // If no matching UcCode object is found, create a new one
-    cPerUc.push_back(UcCode(ucCode, {classCode}));
+    // If no matching UcCodeClassCode object is found, create a new one
+    cPerUc.push_back(UcCodeClassCode(ucCode, {classCode}));
 }
 
 void ClassesPerUc::writeFile() {
@@ -57,12 +57,12 @@ void ClassesPerUc::writeFile() {
         std::cout << "ClassesPerUc list is empty" << std::endl;
     }
 
-    for (UcCode uc : cPerUc) {
-        if(uc.ucCode == "UcCode"){
+    for (UcCodeClassCode uc : cPerUc) {
+        if(uc.ucCode == "UcCodeClassCode"){
             continue;
         }
 
-        std::cout << "UcCode: " << uc.GetUcCode() << std::endl;
+        std::cout << "UcCodeClassCode: " << uc.GetUcCode() << std::endl;
 
         const std::list<std::string>& classCodes = uc.classCode;
         std::cout << "Class Codes: ";

@@ -6,15 +6,15 @@
 
 using namespace std;
 
-class StudentClasses {
+class Student {
     string _studentCode;
     string _studentName;
     string _ucCode;
     string _classCode;
 
 public:
-    StudentClasses();
-    StudentClasses(string studentCode,string studentName, string ucCode, string classCode);
+    Student();
+    Student(string studentCode, string studentName, string ucCode, string classCode);
     void SetStudentCode(string studentCode);
     void SetStudentName(string studentName);
     void SetUcCode(string ucCode);
@@ -23,7 +23,7 @@ public:
     string GetStudentName();
     string GetUcCode();
     string GetClassCode();
-    bool operator < (const StudentClasses& code) const;
+    bool operator < (const Student& code) const;
 };
 
 #endif // STUDENT_CLASSES_H
