@@ -5,21 +5,19 @@
 #include <string>
 #include <fstream>
 #include "../ClassesStruct/UcCode.h"
-#include "DataCollector.h"
 
 #ifndef SCHEDULE_CLASSESPERUCCOLLECTOR_H
 
 using namespace std;
 
 
-class ClassesPerUc : public DataCollector{
+class ClassesPerUc {
     list<UcCode> cPerUc;
 
-    public:
+public:
     void readFile(ifstream& f);
-    void addEClassesToUc(string  classCode, string ucCode);
-
+    void addClassesToUc(string  classCode, string ucCode);
+    void writeFile();
 };
-
 
 #endif //SCHEDULE_CLASSESPERUCCOLLECTOR_H

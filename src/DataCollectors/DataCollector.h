@@ -10,13 +10,4 @@ using namespace std;
 class DataCollector {
     virtual void readFile(ifstream& f) = 0;
 };
-
-class ClassesPerUcCollector : public DataCollector{
-
-public:
-    set<ClassesPerUc> _classesPerUcData;
-    void AddElements(ClassesPerUc classesPerUc);
-    void readFile(ifstream& f);
-};
-
 #endif //SCHEDULE_DATACOLLECTOR_H
