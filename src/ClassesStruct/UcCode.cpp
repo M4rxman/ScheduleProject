@@ -16,7 +16,7 @@ bool UcCode::operator<(const UcCode &code) const {
     return this->ucCode < code.ucCode;
 }
 
-void UcCode::addClassCOde(string leic) {
+void UcCode::addClassCode(string leic) {
     this->classCode.push_back(leic);
 }
 
