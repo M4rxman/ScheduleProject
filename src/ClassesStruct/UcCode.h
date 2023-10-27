@@ -19,7 +19,7 @@ public:
     void SetUcCode(string ucCode);
     string GetUcCode();
     bool operator<(const UcCode &code) const;
-    void addClassCOde(string leic);
+    void addClassCode(string leic);
 
 };
 
