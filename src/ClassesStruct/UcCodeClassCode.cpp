@@ -2,25 +2,25 @@
 // Created by alex2 on 21.10.2023.
 //
 
-#include "UcCode.h"
+#include "UcCodeClassCode.h"
 
-string UcCode::GetUcCode() {
+string UcCodeClassCode::GetUcCode() {
     return ucCode;
 }
 
-void UcCode::SetUcCode(string ucCode) {
+void UcCodeClassCode::SetUcCode(string ucCode) {
     this->ucCode= ucCode;
 }
 
-bool UcCode::operator<(const UcCode &code) const {
+bool UcCodeClassCode::operator<(const UcCodeClassCode &code) const {
     return this->ucCode < code.ucCode;
 }
 
-void UcCode::addClassCode(string leic) {
+void UcCodeClassCode::addClassCode(string leic) {
     this->classCode.push_back(leic);
 }
 
-UcCode::UcCode(string _ucCode, list<string> classCode) {
+UcCodeClassCode::UcCodeClassCode(string _ucCode, list<string> classCode) {
     this->ucCode = _ucCode;
     if(this->classCode.empty()){
         this->classCode = classCode;

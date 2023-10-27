@@ -12,11 +12,12 @@ add_subdirectory(google_tests/googletest-main)
 add_executable(schedule
         src/DataCollectors/ClassesPerUc.cpp
         src/DataCollectors/ClassesPerUc.h
-        src/DataCollectors/DataCollector.h
-        src/DataCollectors/DataCollector.cpp
         src/main.cpp
-        src/DataCollectors/StudentClasses.h
-        src/DataCollectors/StudentClasses.cpp
-        "src/ClassesStruct/UcCode.h"
-        src/ClassesStruct/UcCode.cpp
+        src/ClassesStruct/Student.h
+        src/ClassesStruct/Student.cpp
+        "src/ClassesStruct/UcCodeClassCode.h"
+        src/ClassesStruct/UcCodeClassCode.cpp
+        src/ClassesStruct/ClassesTimeTable.h
+        src/ClassesStruct/ClassesTimeTable.cpp
+        src/DataCollectors/CalssesSchedule.h
 )

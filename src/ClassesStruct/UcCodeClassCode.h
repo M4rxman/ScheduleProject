@@ -9,16 +9,16 @@
 using namespace std;
 
 
-class UcCode {
+class UcCodeClassCode {
 
 
 public:
     string ucCode;
     list<string> classCode;
-    UcCode(string _ucCode, list<string> classCode);
+    UcCodeClassCode(string _ucCode, list<string> classCode);
     void SetUcCode(string ucCode);
     string GetUcCode();
-    bool operator<(const UcCode &code) const;
+    bool operator<(const UcCodeClassCode &code) const;
     void addClassCode(string leic);
 
 };
