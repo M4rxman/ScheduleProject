@@ -1,12 +1,18 @@
 #include <iostream>
-#include "ClassesPerUc.h"
+#include "ClassesSchedule.h"
 
 int main(int argc, char* argv[]) {
     std::cout << "AED" << std::endl;
 
-    ClassesPerUc myClass;
-    ifstream MyReadFile("C:\\Users\\alex2\\Downloads\\schedule\\Data\\classes_per_uc.csv");
-    myClass.readFile(MyReadFile);
-    myClass.writeFile();
+    ClassesPerUc classesPerUc;
+    ifstream classes_per_uc("C:\\Users\\alex2\\Downloads\\schedule\\Data\\classes_per_uc.csv");
+    classesPerUc.readFile(classes_per_uc);
+    classesPerUc.writeFile();
+
+   ClassesSchedule classesSchedule;
+    ifstream classes("C:\\Users\\alex2\\Downloads\\schedule\\Data\\classes.csv");
+    classesSchedule.readFile(classes, classesPerUc);
+    //classesSchedule.writeFile();
+
 
 }

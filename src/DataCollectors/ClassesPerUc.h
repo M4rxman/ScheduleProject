@@ -4,7 +4,7 @@
 #include <list>
 #include <string>
 #include <fstream>
-#include "../ClassesStruct/UcCodeClassCode.h"
+#include "../ClassesStruct/UcCode.h"
 
 #ifndef SCHEDULE_CLASSESPERUCCOLLECTOR_H
 
@@ -12,12 +12,13 @@ using namespace std;
 
 
 class ClassesPerUc {
-    list<UcCodeClassCode> cPerUc; //ClassesPerUc list
+    list<UcCode> cPerUc; //ClassesPerUc list
 
 public:
     void readFile(ifstream& f);
     void addClassesToUc(string  classCode, string ucCode);
     void writeFile();
+    list<UcCode>& getClassesPerUc();
 };
 
 #endif //SCHEDULE_CLASSESPERUCCOLLECTOR_H

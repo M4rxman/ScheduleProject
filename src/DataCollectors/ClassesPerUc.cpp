@@ -11,12 +11,14 @@
 // needs to be reworked may be
 
 void ClassesPerUc::readFile(ifstream &f) {
-    string ucCode, stringClassCode;
+    string ucCode, stringClassCode, skippingString;
 
     if (!f.is_open()) {
         cerr << "Error: File not open." << endl;
         return;
     }
+
+    getline(f, skippingString);
 
     // Temporary map to store class codes for each unique ucCode
     map<string, list<string>> tempMap;
@@ -35,21 +37,23 @@ void ClassesPerUc::readFile(ifstream &f) {
             addClassesToUc(classCode, ucCode);
         }
     }
+
+    f.close();
 }
 
 void ClassesPerUc::addClassesToUc(string classCode, string ucCode) {
-    // Iterate through the list of UcCodeClassCode objects
+    // Iterate through the list of UcCode objects
     for (auto it = cPerUc.begin(); it != cPerUc.end(); ++it) {
-        // Check if the ucCode of the current UcCodeClassCode object matches the provided ucCode
-        if (it->GetUcCode() == ucCode) {
-            // If it matches, add the classCode to the UcCodeClassCode object
+        // Check if the ucCode of the current UcCode object matches the provided ucCode
+        if (it->getUcCode() == ucCode) {
+            // If it matches, add the classCode to the UcCode object
             it->addClassCode(classCode);
             return; // Exit the loop once class code is added
         }
     }
 
-    // If no matching UcCodeClassCode object is found, create a new one
-    cPerUc.push_back(UcCodeClassCode(ucCode, {classCode}));
+    // If no matching UcCode object is found, create a new one
+    cPerUc.push_back(UcCode(ucCode, {classCode}));
 }
 
 void ClassesPerUc::writeFile() {
@@ -57,20 +61,24 @@ void ClassesPerUc::writeFile() {
         std::cout << "ClassesPerUc list is empty" << std::endl;
     }
 
-    for (UcCodeClassCode uc : cPerUc) {
-        if(uc.ucCode == "UcCodeClassCode"){
+    for (UcCode uc : cPerUc) {
+        if(uc.getUcCode() == "UcCode"){
             continue;
         }
 
-        std::cout << "UcCodeClassCode: " << uc.GetUcCode() << std::endl;
+        std::cout << "UcCode: " << uc.getUcCode() << std::endl;
 
-        const std::list<std::string>& classCodes = uc.classCode;
+        std::list<ClassCode>& classCodes = uc.getClassCodes();
         std::cout << "Class Codes: ";
-        for (const std::string& code : classCodes) {
-            std::cout << code << " ";
+        for (ClassCode& code : classCodes) {
+            std::cout << code.getCode() << " ";
         }
         std::cout << std::endl;
 
         std::cout << "-----------------------------------" << std::endl;
     }
+}
+
+list<UcCode> &ClassesPerUc::getClassesPerUc() {
+    return this->cPerUc;
 }

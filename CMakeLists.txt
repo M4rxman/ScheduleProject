@@ -15,9 +15,11 @@ add_executable(schedule
         src/main.cpp
         src/ClassesStruct/Student.h
         src/ClassesStruct/Student.cpp
-        "src/ClassesStruct/UcCodeClassCode.h"
-        src/ClassesStruct/UcCodeClassCode.cpp
-        src/ClassesStruct/ClassesTimeTable.h
-        src/ClassesStruct/ClassesTimeTable.cpp
-        src/DataCollectors/CalssesSchedule.h
+        "src/ClassesStruct/UcCode.h"
+        src/ClassesStruct/UcCode.cpp
+        src/DataCollectors/ClassesSchedule.h
+        src/ClassesStruct/ClassCode.h
+        src/ClassesStruct/Schedule.cpp
+        src/ClassesStruct/ClassCode.cpp
+        src/DataCollectors/ClassesSchedule.cpp
 )
