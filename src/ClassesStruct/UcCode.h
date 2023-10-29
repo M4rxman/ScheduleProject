@@ -3,22 +3,24 @@
 //
 #include <string>
 #include <list>
+#include "ClassCode.h"
 #ifndef SCHEDULE_UCCODE_H
 #define SCHEDULE_UCCODE_H
 
 using namespace std;
 
 
-class UcCodeClassCode {
-
+class UcCode {
+    string ucCode;
+    list<ClassCode> classCode;
 
 public:
-    string ucCode;
-    list<string> classCode;
-    UcCodeClassCode(string _ucCode, list<string> classCode);
+
+    UcCode(string _ucCode, list<ClassCode> classCode);
     void SetUcCode(string ucCode);
-    string GetUcCode();
-    bool operator<(const UcCodeClassCode &code) const;
+    string getUcCode();
+    list<ClassCode>& getClassCodes();
+    bool operator<(const UcCode &code) const;
     void addClassCode(string leic);
 
 };
