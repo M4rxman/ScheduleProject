@@ -4,47 +4,67 @@ Student::Student() {
     // Default constructor initializes the object
 }
 
-Student::Student(string studentCode, string studentName, string ucCode, string classCode) {
-    SetStudentCode(studentCode);
-    SetStudentName(studentName);
-    SetUcCode(ucCode);
-    SetClassCode(classCode);
+Student::Student(string studentCode, string studentName, list<UcCode> ucCode) {
+    setStudentCode(studentCode);
+    setStudentName(studentName);
+    setUcCode(ucCode);
 }
 
-void Student::SetStudentCode(string studentCode) {
-    _studentCode = studentCode;
+
+
+void Student::setStudentCode(string studentCode) {
+    this->studentCode = studentCode;
 }
 
-void Student::SetStudentName(string studentName) {
-    _studentName = studentName;
+void Student::setStudentName(string studentName) {
+    this->studentName = studentName;
 }
 
-void Student::SetUcCode(string ucCode) {
-    _ucCode = ucCode;
+void Student::setUcCode(list<UcCode> ucCode) {
+    this->ucCode = ucCode;
 }
 
-void Student::SetClassCode(string classCode) {
-    _classCode = classCode;
+string Student::getStudentCode() {
+    return studentCode;
 }
 
-string Student::GetStudentCode() {
-    return _studentCode;
+string Student::getStudentName() {
+    return studentName;
 }
 
-string Student::GetStudentName() {
-    return _studentName;
-}
-
-string Student::GetUcCode() {
-    return _ucCode;
-}
-
-string Student::GetClassCode() {
-    return _classCode;
+list<UcCode> Student::getUcCodelist() {
+    return this->ucCode;
 }
 
 bool Student::operator<(const Student& code) const {
-    return this->_studentCode < code._studentCode;
+    return this->studentCode < code.studentCode;
+}
+
+//non-standard shit
+
+void Student::addUcCode(UcCode newUcCode) {
+    this->ucCode.emplace_back(newUcCode);
+}
+
+list<ClassCode> Student::getClassCodeByUcCode(UcCode givenUcCode) {
+    for(UcCode fUcCode : this->ucCode){
+        if(givenUcCode.getUcCode() == fUcCode.getUcCode()){
+            return fUcCode.getClassCodes();
+        }
+    }
+    return list<ClassCode>();
+}
+
+vector<Schedule> Student::getScheduleByClassCode(ClassCode givenClassCode) {
+    for(UcCode fUcCode : this->ucCode){
+        for(ClassCode searchedClassCode : fUcCode.getClassCodes()){
+            if(givenClassCode.getCode() == searchedClassCode.getCode()){
+                return searchedClassCode.getSchedule();
+            }
+        }
+    }
+
+    return vector<Schedule>();
 }
 
 

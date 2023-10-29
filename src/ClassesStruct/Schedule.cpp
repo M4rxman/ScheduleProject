@@ -14,3 +14,23 @@ Schedule::Schedule(string weekday, string startHour, string duration, string typ
     this->type = type;
     this->codeClass = codeClass;
 }
+
+string Schedule::getWeekday() {
+    return this->weekday;
+}
+
+string Schedule::getStartHour() {
+    return this->startHour;
+}
+
+string Schedule::getDuration() {
+    return this->duration;
+}
+
+string Schedule::getScheduleType() {
+    return this->type;
+}
+
+string Schedule::getCodeClass() {
+    return this->codeClass;
+}

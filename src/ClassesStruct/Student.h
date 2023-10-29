@@ -2,27 +2,30 @@
 #define STUDENT_CLASSES_H
 
 #include <string>
+#include "UcCode.h"
 #include <vector>
 
 using namespace std;
 
 class Student {
-    string _studentCode;
-    string _studentName;
-    string _ucCode;
-    string _classCode;
+    string studentCode;
+    string studentName;
+    list<UcCode> ucCode;
 
 public:
     Student();
-    Student(string studentCode, string studentName, string ucCode, string classCode);
-    void SetStudentCode(string studentCode);
-    void SetStudentName(string studentName);
-    void SetUcCode(string ucCode);
-    void SetClassCode(string classCode);
-    string GetStudentCode();
-    string GetStudentName();
-    string GetUcCode();
-    string GetClassCode();
+    Student(string studentCode, string studentName, list<UcCode> ucCode);
+    void setStudentCode(string studentCode);
+    void setStudentName(string studentName);
+    void setUcCode( list<UcCode> ucCode);
+    void addUcCode(UcCode newUcCode);
+
+    string getStudentCode();
+    string getStudentName();
+    list<UcCode> getUcCodelist();
+    list<ClassCode> getClassCodeByUcCode(UcCode givenUcCode);
+    vector<Schedule> getScheduleByClassCode(ClassCode givenClassCode);
+
     bool operator < (const Student& code) const;
 };
 

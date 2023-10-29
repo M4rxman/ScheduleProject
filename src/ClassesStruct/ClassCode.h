@@ -21,6 +21,7 @@ public:
     ClassCode(string leic);
     void addSchedule(Schedule timeTable);
     string getCode();
+    vector<Schedule> getSchedule();
     bool operator<(const ClassCode &classCode) const;
 
 };
