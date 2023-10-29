@@ -17,7 +17,7 @@ class ClassesPerUc {
 public:
     void readFile(ifstream& f);
     void addClassesToUc(string  classCode, string ucCode);
-    void writeFile();
+    void printData();
     list<UcCode>& getClassesPerUc();
 };
 

@@ -56,7 +56,11 @@ void ClassesPerUc::addClassesToUc(string classCode, string ucCode) {
     cPerUc.push_back(UcCode(ucCode, {classCode}));
 }
 
-void ClassesPerUc::writeFile() {
+list<UcCode> &ClassesPerUc::getClassesPerUc() {
+    return this->cPerUc;
+}
+
+void ClassesPerUc::printData() {
     if(cPerUc.empty()){
         std::cout << "ClassesPerUc list is empty" << std::endl;
     }
@@ -77,8 +81,4 @@ void ClassesPerUc::writeFile() {
 
         std::cout << "-----------------------------------" << std::endl;
     }
-}
-
-list<UcCode> &ClassesPerUc::getClassesPerUc() {
-    return this->cPerUc;
 }

@@ -22,3 +22,7 @@ string ClassCode::getCode() {
     return this->code;
 }
 
+vector<Schedule> ClassCode::getSchedule() {
+    return this->schedules;
+}
+

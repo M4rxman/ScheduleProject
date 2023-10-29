@@ -18,7 +18,11 @@ class Schedule {
 public:
     Schedule();
     Schedule(string weekday, string startHour, string duration, string type,  string codeClass);
-
+    string getWeekday();
+    string getStartHour();
+    string getDuration();
+    string getScheduleType();
+    string getCodeClass();
 };
 
 

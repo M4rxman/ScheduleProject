@@ -38,3 +38,8 @@ void ClassesSchedule::readFile(ifstream &f, ClassesPerUc& classesPerUc) {
 
     f.close();
 }
+
+void ClassesSchedule::printData() {
+
+
+}

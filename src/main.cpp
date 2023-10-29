@@ -7,7 +7,7 @@ int main(int argc, char* argv[]) {
     ClassesPerUc classesPerUc;
     ifstream classes_per_uc("C:\\Users\\alex2\\Downloads\\schedule\\Data\\classes_per_uc.csv");
     classesPerUc.readFile(classes_per_uc);
-    classesPerUc.writeFile();
+    classesPerUc.printData();
 
    ClassesSchedule classesSchedule;
     ifstream classes("C:\\Users\\alex2\\Downloads\\schedule\\Data\\classes.csv");
