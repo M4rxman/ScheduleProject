@@ -10,7 +10,11 @@ class StudentsClasses {
     list<Student> student;
 
 public:
-    void prtintData();
+    void readFile(ifstream& f);
+    void printData();
+    void setNewStudent(string givenStudentCode, string givenStudentName,
+                                string givenUcCode, string givenClassCode);
+
 
 };
 

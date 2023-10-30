@@ -16,7 +16,7 @@ class ClassesSchedule {
 public:
     void readFile(ifstream& f, ClassesPerUc& classesPerUc);
     void addClassesToUc(string  classCode, string ucCode);
-    void printData();
+    void printData(ClassesPerUc& classesPerUc);
 };
 
 
