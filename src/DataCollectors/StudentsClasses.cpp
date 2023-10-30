@@ -77,8 +77,11 @@ void StudentsClasses::readFile(ifstream &f) {
 
         if (!studentFound) {
             // If the student doesn't exist, create a new student with the UC and Class code
+            /*
             Student newStudent(studentCode, studentName, list<UcCode>{UcCode(ucCode, list<ClassCode>{ClassCode(classCode)})});
-            student.push_back(newStudent);
+            student.push_back(newStudent);*/
+            setNewStudent(studentCode, studentName, ucCode, classCode);
+
         }
     }
 
