@@ -3,7 +3,9 @@
 //
 
 #include <iomanip>
+#include <map>
 #include "ScheduleManager.h"
+#include "UCManager.h"
 
 void ScheduleManager::loadClassesPerUcData(const string &filename) {
     std::ifstream file(filename);
@@ -149,20 +151,62 @@ void ScheduleManager::consultStudentsInAtLeastNUCs(int n) {
     std::cout << "------------------------" << std::endl;
 }
 
+void ScheduleManager::consultUcWithMostStudents() {
+    std::cout << "Consulting UCs with the greatest number of students" << std::endl;
+
+    std::map<std::string, int> ucStudentCount;  // Map to store UCs and their student counts
+
+    // Count the number of students in each UC
+    for (Student& student : studentsClasses.getStudents()) {
+        for (UcCode& ucCode : student.getUcCodelist()) {
+            ucStudentCount[ucCode.getUcCode()]++;
+        }
+    }
+
+    // Find the UC(s) with the greatest number of students
+    int maxStudentCount = 0;
+    std::vector<std::string> ucsWithMostStudents;
+
+    for (const auto& pair : ucStudentCount) {
+        if (pair.second > maxStudentCount) {
+            maxStudentCount = pair.second;
+            ucsWithMostStudents = {pair.first};
+        } else if (pair.second == maxStudentCount) {
+            ucsWithMostStudents.push_back(pair.first);
+        }
+    }
+
+    // Display the UC(s) with the greatest number of students
+    if (ucsWithMostStudents.empty()) {
+        std::cout << "No UCs found." << std::endl;
+    } else {
+        std::cout << "UC(s) with the greatest number of students (" << maxStudentCount << " students):" << std::endl;
+        for (const std::string& ucCode : ucsWithMostStudents) {
+            std::cout << "UC Code: " << ucCode << std::endl;
+        }
+    }
+    std::cout << "------------------------" << std::endl;
+}
+
 int ScheduleManager::consultMenu() {
-    int consultingChoise, n;
-    string stringCode;
+    int consultingChoice, n;
+    std::string stringCode, ucCode, oldUCCode, newUCCode;
+
+    UCManager ucManager("classesPerUcFile", "studentsClassesFile", "classesScheduleFile", classesPerUc, studentsClasses, classesSchedule, studentsClasses);
 
     while (true) {
         std::cout << "1. Consult via student code\n";
         std::cout << "2. Consult class code\n";
         std::cout << "3. Consult the students within a given class, course or year\n";
         std::cout << "4. Consult the number of students registered in at least n UCs\n";
-        std::cout << "5. Exit\n";
+        std::cout << "5. Add student to a UC\n";
+        std::cout << "6. Remove student from a UC\n";
+        std::cout << "7. Switch student's UC\n";
+        std::cout << "8. Exit\n";
         std::cout << "Enter your choice: ";
-        std::cin >> consultingChoise;
+        std::cin >> consultingChoice;
 
-        switch (consultingChoise) {
+        switch (consultingChoice) {
             case 1:
                 std::cout << "Enter student code: \n";
                 std::cin >> stringCode;
@@ -174,16 +218,38 @@ int ScheduleManager::consultMenu() {
                 consultClassSchedule(stringCode);
                 break;
             case 3:
-                std::cout << "Enter year: " << std::endl;
+                std::cout << "Enter class, course, or year: " << std::endl;
                 std::cin >> stringCode;
                 consultStudentsInClassCourseYear(stringCode);
                 break;
             case 4:
-                std::cout << "Enter amount of UCs :" << std::endl;
+                std::cout << "Enter the number of UCs: " << std::endl;
                 std::cin >> n;
                 consultStudentsInAtLeastNUCs(n);
                 break;
             case 5:
+                std::cout << "Enter student code: ";
+                std::cin >> stringCode;
+                std::cout << "Enter UC code: ";
+                ucManager.addStudentToUC(stringCode, ucCode);
+                break;
+            case 6:
+                std::cout << "Enter student code: ";
+                std::cin >> stringCode;
+                std::cout << "Enter UC code: ";
+                std::cin >> ucCode;
+                ucManager.removeStudentFromUC(stringCode, ucCode);
+                break;
+            case 7:
+                std::cout << "Enter student code: ";
+                std::cin >> stringCode;
+                std::cout << "Enter old UC code: ";
+                std::cin >> oldUCCode;
+                std::cout << "Enter new UC code: ";
+                std::cin >> newUCCode;
+                ucManager.switchStudentUC(stringCode, oldUCCode, newUCCode);
+                break;
+            case 8:
                 std::cout << "Exiting the program." << std::endl;
                 return 0;
             default:

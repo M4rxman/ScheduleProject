@@ -3,6 +3,7 @@
 
 #include <string>
 #include "UcCode.h"
+#include "ClassesPerUc.h"
 #include <vector>
 
 using namespace std;
@@ -29,6 +30,15 @@ public:
     bool operator < (const Student& code) const;
 
     vector<Schedule> getSchedule();
+
+    void removeUcCode(UcCode code);
+
+
+    int timeToMinutes(const string &time);
+    int durationToMinutes(const string &duration);
+    bool doSchedulesOverlap(Schedule schedule1, Schedule schedule2);
+
+    bool hasScheduleConflict(Schedule &schedule1, Schedule &schedule2);
 };
 
 #endif // STUDENT_CLASSES_H

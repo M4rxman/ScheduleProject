@@ -101,3 +101,12 @@ ClassCode ClassesPerUc::getVerifyClassCode(ClassCode unVerifiedClassCode) {
     }
     return ClassCode();
 }
+
+UcCode* ClassesPerUc::findUcCodeByCode(const string& ucCode) {
+    for (UcCode& uc : cPerUc) {
+        if (uc.getUcCode() == ucCode) {
+            return &uc; // Return a pointer to the found UC code
+        }
+    }
+    return nullptr; // Return nullptr if the UC code is not found
+}

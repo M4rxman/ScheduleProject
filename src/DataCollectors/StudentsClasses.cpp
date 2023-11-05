@@ -108,3 +108,27 @@ void StudentsClasses::setNewStudent(string givenStudentCode, string givenStudent
 list<Student> StudentsClasses::getStudents() {
     return this->student;
 }
+
+Student *StudentsClasses::findStudentByCode(const string& studentCode) {
+    for (Student& student_singular : student) {
+        if (student_singular.getStudentCode() == studentCode) {
+            return &student_singular; // Return a pointer to the found student
+        }
+    }
+    return nullptr; // Return nullptr if the student is not found
+}
+
+bool StudentsClasses::isStudentInUc(Student student, UcCode ucCode) const {
+    for (Student s : this->student) {
+        // Find the student by their unique identifier (e.g., student code)
+        if (s.getStudentCode() == student.getStudentCode()) {
+            // Check if the student is registered in the given UC
+            for (UcCode uc : s.getUcCodelist()) {
+                if (uc.getUcCode() == ucCode.getUcCode()) {
+                    return true; // Student is registered in the UC
+                }
+            }
+        }
+    }
+    return false; // Student is not registered in the UC
+}

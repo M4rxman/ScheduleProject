@@ -21,6 +21,8 @@ public:
     UcCode getUcCodebyCode(UcCode ucCode);
     list<UcCode>& getClassesPerUc();
     ClassCode getVerifyClassCode(ClassCode unVerifiedClassCode);
+
+    UcCode *findUcCodeByCode(const string &basicString);
 };
 
 #endif //SCHEDULE_CLASSESPERUCCOLLECTOR_H
