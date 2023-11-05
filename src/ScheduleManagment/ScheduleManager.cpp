@@ -3,6 +3,7 @@
 //
 
 #include <iomanip>
+#include <map>
 #include "ScheduleManager.h"
 
 void ScheduleManager::loadClassesPerUcData(const string &filename) {
@@ -149,6 +150,43 @@ void ScheduleManager::consultStudentsInAtLeastNUCs(int n) {
     std::cout << "------------------------" << std::endl;
 }
 
+void ScheduleManager::consultUcWithMostStudents() {
+    std::cout << "Consulting UCs with the greatest number of students" << std::endl;
+
+    std::map<std::string, int> ucStudentCount;  // Map to store UCs and their student counts
+
+    // Count the number of students in each UC
+    for (Student& student : studentsClasses.getStudents()) {
+        for (UcCode& ucCode : student.getUcCodelist()) {
+            ucStudentCount[ucCode.getUcCode()]++;
+        }
+    }
+
+    // Find the UC(s) with the greatest number of students
+    int maxStudentCount = 0;
+    std::vector<std::string> ucsWithMostStudents;
+
+    for (const auto& pair : ucStudentCount) {
+        if (pair.second > maxStudentCount) {
+            maxStudentCount = pair.second;
+            ucsWithMostStudents = {pair.first};
+        } else if (pair.second == maxStudentCount) {
+            ucsWithMostStudents.push_back(pair.first);
+        }
+    }
+
+    // Display the UC(s) with the greatest number of students
+    if (ucsWithMostStudents.empty()) {
+        std::cout << "No UCs found." << std::endl;
+    } else {
+        std::cout << "UC(s) with the greatest number of students (" << maxStudentCount << " students):" << std::endl;
+        for (const std::string& ucCode : ucsWithMostStudents) {
+            std::cout << "UC Code: " << ucCode << std::endl;
+        }
+    }
+    std::cout << "------------------------" << std::endl;
+}
+
 int ScheduleManager::consultMenu() {
     int consultingChoise, n;
     string stringCode;
@@ -158,7 +196,8 @@ int ScheduleManager::consultMenu() {
         std::cout << "2. Consult class code\n";
         std::cout << "3. Consult the students within a given class, course or year\n";
         std::cout << "4. Consult the number of students registered in at least n UCs\n";
-        std::cout << "5. Exit\n";
+        std::cout << "5. Consult the UCs with the greatest number of students\n";
+        std::cout << "6. Exit\n";
         std::cout << "Enter your choice: ";
         std::cin >> consultingChoise;
 
@@ -184,6 +223,9 @@ int ScheduleManager::consultMenu() {
                 consultStudentsInAtLeastNUCs(n);
                 break;
             case 5:
+                consultUcWithMostStudents();
+                break;
+            case 6:
                 std::cout << "Exiting the program." << std::endl;
                 return 0;
             default:

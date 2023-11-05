@@ -45,6 +45,7 @@ private:
 
     void consultStudentsInClassCourseYear(const string &courseOrYear);
     void consultStudentsInAtLeastNUCs(int n);
+    void consultUcWithMostStudents();
 };
 
 
