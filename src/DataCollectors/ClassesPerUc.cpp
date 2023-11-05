@@ -82,3 +82,11 @@ void ClassesPerUc::printData() {
         std::cout << "-----------------------------------" << std::endl;
     }
 }
+
+UcCode ClassesPerUc::getUcCodebyCode(UcCode ucCode) {
+    for(UcCode uc_Code : cPerUc){
+        if(uc_Code.getUcCode() == ucCode.getUcCode()){
+            return uc_Code;
+        }
+    }
+}

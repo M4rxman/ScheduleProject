@@ -18,6 +18,7 @@ public:
     void readFile(ifstream& f);
     void addClassesToUc(string  classCode, string ucCode);
     void printData();
+    UcCode getUcCodebyCode(UcCode ucCode);
     list<UcCode>& getClassesPerUc();
 };
 

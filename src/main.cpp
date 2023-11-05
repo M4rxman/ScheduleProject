@@ -14,7 +14,7 @@ int main() {
     // Create a ScheduleManager instance
     ScheduleManager scheduleManager(classesPerUcFile, studentsClassesFile, classesScheduleFile);
 
-    int choice;
+    int menuChoice;
     string studentCode,classCode;
 
     while (true) {
@@ -22,13 +22,12 @@ int main() {
         std::cout << "1. View Classes Per Uc\n";
         std::cout << "2. View Students Classes\n";
         std::cout << "3. View Classes Schedule\n";
-        std::cout << "4. Consult Student Schedule\n";
-        std::cout << "5. Consult Classes Schedule\n";
-        std::cout << "6. Exit\n";
+        std::cout << "4. Consult\n";
+        std::cout << "5. Exit\n";
         std::cout << "Enter your choice: ";
-        std::cin >> choice;
+        std::cin >> menuChoice;
 
-        switch (choice) {
+        switch (menuChoice) {
             case 1:
                 std::cout << "Classes Per Uc" << std::endl;
                 scheduleManager.printClassesPerUc();
@@ -42,16 +41,10 @@ int main() {
                 scheduleManager.printClassesSchedule();
                 break;
             case 4:
-                std::cout << "Enter Student Code: " << std::endl;
-                std::cin >> studentCode;
-                scheduleManager.consultStudentSchedule(studentCode);
+                std::cout << "Consulting menu: " << std::endl;
+                scheduleManager.consultMenu();
                 break;
             case 5:
-                std::cout << "Classes Schedule: " << std::endl;
-                std::cin >> classCode;
-                scheduleManager.consultClassSchedule(classCode);
-                break;
-            case 6:
                 std::cout << "Exiting the program." << std::endl;
                 return 0;
             default:

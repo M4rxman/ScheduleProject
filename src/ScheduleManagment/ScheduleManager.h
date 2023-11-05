@@ -32,6 +32,7 @@ public:
 
     void consultStudentSchedule(const std::string& studentCode);
     void consultClassSchedule(const std::string& classCode);
+    int consultMenu();
 
 private:
     ClassesPerUc classesPerUc;
@@ -43,7 +44,9 @@ private:
     void loadStudentsClassesData(const std::string& filename);
 
 
+    void consultStudentsInClassCourseYear(const string &courseOrYear);
 
+    void consultStudentsInAtLeastNUCs(int n);
 };
 
 

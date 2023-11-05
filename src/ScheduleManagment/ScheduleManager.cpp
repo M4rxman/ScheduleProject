@@ -54,43 +54,22 @@ void ScheduleManager::consultStudentSchedule(const std::string& studentCode) {
     } else {
         for (UcCode &ucCodeClass: studentOutput.getUcCodelist()) {
             std::cout << "UcCode: " << ucCodeClass.getUcCode() << std::endl;
-            for (ClassCode &classCode: ucCodeClass.getClassCodes()) {
+            for (ClassCode &classCode: classesPerUc.getUcCodebyCode(ucCodeClass).getClassCodes()) {
                 std::cout << "ClassCode: " << classCode.getCode() << std::endl;
-                // Determine the maximum length of each field for alignment
-                size_t maxWeekdayLength = 0;
-                size_t maxStartHourLength = 0;
-                size_t maxDurationLength = 0;
-                size_t maxTypeLength = 0;
+                vector<Schedule> scheduleOutput = classCode.getSchedule();
 
-                for (Schedule schedule: classCode.getSchedule()) {
-                    if (schedule.getWeekday().length() > maxWeekdayLength) {
-                        maxWeekdayLength = schedule.getWeekday().length();
-                    }
-                    if (schedule.getStartHour().length() > maxStartHourLength) {
-                        maxStartHourLength = schedule.getStartHour().length();
-                    }
-                    if (schedule.getDuration().length() > maxDurationLength) {
-                        maxDurationLength = schedule.getDuration().length();
-                    }
-                    if (schedule.getScheduleType().length() > maxTypeLength) {
-                        maxTypeLength = schedule.getScheduleType().length();
-                    }
-                }
-
-                // Print the schedules in aligned columns
-                for (Schedule schedule: classCode.getSchedule()) {
-                    std::cout << "Weekday: " << std::left << std::setw(maxWeekdayLength) << schedule.getWeekday();
+                for(auto it = scheduleOutput.begin(); it != scheduleOutput.end(); it++){
+                    std::cout << "Weekday: " << std::left << std::setw(it->getWeekday().length()) << it->getWeekday();
                     std::cout << "   ";
-                    std::cout << "StartHour: " << std::left << std::setw(maxStartHourLength) << schedule.getStartHour();
+                    std::cout << "StartHour: " << std::left << std::setw(it->getStartHour().length()) << it->getStartHour();
                     std::cout << "   ";
-                    std::cout << "Duration: " << std::left << std::setw(maxDurationLength) << schedule.getDuration();
+                    std::cout << "Duration: " << std::left << std::setw(it->getDuration().length()) << it->getDuration();
                     std::cout << "   ";
-                    std::cout << "Type: " << std::left << std::setw(maxTypeLength) << schedule.getScheduleType();
+                    std::cout << "Type: " << std::left << std::setw(it->getScheduleType().length()) << it->getScheduleType();
                     std::cout << std::endl;
                 }
                 std::cout << "------------------------" << std::endl;
             }
-            std::cout << "########" + ucCodeClass.getUcCode() + "########" << std::endl;
         }
     }
 }
@@ -126,5 +105,72 @@ void ScheduleManager::consultClassSchedule(const std::string& classCode) {
 
     if (!found) {
         std::cout << "Class not found." << std::endl;
+    }
+}
+
+void ScheduleManager::consultStudentsInClassCourseYear(const std::string& courseOrYear) {
+    std::cout << "Consulting students in class/course/year: " << courseOrYear << std::endl;
+
+    bool found = false;
+
+    for (Student& student : studentsClasses.getStudents()) {
+        if (student.getStudentCode().find(courseOrYear) != std::string::npos) {
+            std::cout << "Student Number: " << student.getStudentCode()
+                      << " Student Name: " << student.getStudentName() << std::endl;
+            found = true;
+        }
+    }
+
+    if (!found) {
+        std::cout << "No students found for class/course/year: " << courseOrYear << std::endl;
+    }
+}
+
+void ScheduleManager::consultStudentsInAtLeastNUCs(int n) {
+    std::cout << "Consulting students registered in at least " << n << " UCs" << std::endl;
+
+    int count = 0;
+    for (Student& student : studentsClasses.getStudents()) {
+        if (student.getUcCodelist().size() >= n) {
+            count++;
+            std::cout << "Student Number: " << student.getStudentCode()
+                      << " Student Name: " << student.getStudentName() << std::endl;
+        }
+    }
+
+    if (count == 0) {
+        std::cout << "No students registered in at least " << n << " UCs" << std::endl;
+    }
+}
+
+int ScheduleManager::consultMenu() {
+    int consultingChoise;
+    string stringCode;
+
+    while (true) {
+        std::cout << "1. Consult via student code\n";
+        std::cout << "2. Consult class code\n";
+        std::cout << "3. Exit\n";
+        std::cout << "Enter your choice: ";
+        std::cin >> consultingChoise;
+
+        switch (consultingChoise) {
+            case 1:
+                std::cout << "Enter student code: \n";
+                std::cin >> stringCode;
+                consultStudentSchedule(stringCode);
+                break;
+            case 2:
+                std::cout << "Enter class code: \n";
+                std::cin >> stringCode;
+                consultClassSchedule(stringCode);
+                break;
+            case 3:
+                std::cout << "Exiting the program." << std::endl;
+                return 0;
+            default:
+                std::cout << "Invalid choice. Please enter a valid option." << std::endl;
+                break;
+        }
     }
 }
