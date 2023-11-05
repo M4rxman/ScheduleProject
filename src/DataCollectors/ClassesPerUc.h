@@ -20,6 +20,7 @@ public:
     void printData();
     UcCode getUcCodebyCode(UcCode ucCode);
     list<UcCode>& getClassesPerUc();
+    ClassCode getVerifyClassCode(ClassCode unVerifiedClassCode);
 };
 
 #endif //SCHEDULE_CLASSESPERUCCOLLECTOR_H

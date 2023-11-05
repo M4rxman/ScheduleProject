@@ -11,12 +11,14 @@
 using namespace std;
 
 class ClassesSchedule {
-    list<Schedule> classesTimeTable;
     list<UcCode> ucCodeClassCode;
+
 public:
     void readFile(ifstream& f, ClassesPerUc& classesPerUc);
     void addClassesToUc(string  classCode, string ucCode);
     void printData(ClassesPerUc& classesPerUc);
+    list<UcCode> getUcClassCodes();
+
 };
 
 

@@ -26,3 +26,4 @@ vector<Schedule> ClassCode::getSchedule() {
     return this->schedules;
 }
 
+

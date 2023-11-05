@@ -90,3 +90,14 @@ UcCode ClassesPerUc::getUcCodebyCode(UcCode ucCode) {
         }
     }
 }
+
+ClassCode ClassesPerUc::getVerifyClassCode(ClassCode unVerifiedClassCode) {
+    for(UcCode uc_Code : cPerUc){
+        for(ClassCode class_Code : uc_Code.getClassCodes()){
+            if(unVerifiedClassCode.getCode() == class_Code.getCode()){
+                return class_Code;
+            }
+        }
+    }
+    return ClassCode();
+}

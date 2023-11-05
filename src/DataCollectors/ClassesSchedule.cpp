@@ -85,3 +85,7 @@ void ClassesSchedule::printData(ClassesPerUc& classesPerUc) {
         std::cout << "########" + ucCodeClass.getUcCode() + "########" <<  std::endl;
     }
 }
+
+list<UcCode> ClassesSchedule::getUcClassCodes() {
+    return this->ucCodeClassCode;
+}
