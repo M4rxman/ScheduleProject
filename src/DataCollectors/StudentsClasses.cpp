@@ -104,3 +104,7 @@ void StudentsClasses::setNewStudent(string givenStudentCode, string givenStudent
     }
 
 }
+
+list<Student> StudentsClasses::getStudents() {
+    return this->student;
+}

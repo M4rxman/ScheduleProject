@@ -2,6 +2,7 @@
 // Created by alex2 on 28.10.2023.
 //
 
+#include <iostream>
 #include "Schedule.h"
 
 Schedule::Schedule() {
@@ -33,4 +34,8 @@ string Schedule::getScheduleType() {
 
 string Schedule::getCodeClass() {
     return this->codeClass;
+}
+
+Schedule::Schedule(const vector<Schedule>& timeTable) {
+
 }

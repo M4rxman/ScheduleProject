@@ -5,6 +5,7 @@
 #ifndef SCHEDULE_SCHEDULE_H
 #define SCHEDULE_SCHEDULE_H
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -23,6 +24,8 @@ public:
     string getDuration();
     string getScheduleType();
     string getCodeClass();
+
+    Schedule(const vector<Schedule>& vector1);
 };
 
 

@@ -14,7 +14,7 @@ public:
     void printData();
     void setNewStudent(string givenStudentCode, string givenStudentName,
                                 string givenUcCode, string givenClassCode);
-
+    list<Student> getStudents();
 
 };
 

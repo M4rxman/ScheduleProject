@@ -67,6 +67,16 @@ vector<Schedule> Student::getScheduleByClassCode(ClassCode givenClassCode) {
     return vector<Schedule>();
 }
 
+vector<Schedule> Student::getSchedule() {
+    vector<Schedule> result;
+    for(UcCode& uc : ucCode){
+        for(ClassCode classCode : uc.getClassCodes()){
+            result.push_back(classCode.getSchedule());
+        }
+    }
+    return result;
+}
+
 
 
 

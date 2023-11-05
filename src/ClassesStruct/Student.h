@@ -27,6 +27,8 @@ public:
     vector<Schedule> getScheduleByClassCode(ClassCode givenClassCode);
 
     bool operator < (const Student& code) const;
+
+    vector<Schedule> getSchedule();
 };
 
 #endif // STUDENT_CLASSES_H
