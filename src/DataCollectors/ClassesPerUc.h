@@ -61,4 +61,4 @@ public:
     UcCode *findUcCodeByCode(const string &basicString);
 };
 
-#endif //SCHEDULE_CLASSESPERUCCOLLECTOR_H
+#endif //SCHEDULE_CLASSESPERUCCOLLECTOR_H/

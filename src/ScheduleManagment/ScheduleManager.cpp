@@ -6,7 +6,10 @@
 #include <map>
 #include "ScheduleManager.h"
 #include "UCManager.h"
-
+/**
+ * @brief Load data from the classes per UC file.
+ * @param filename The filename to load data from.
+ */
 void ScheduleManager::loadClassesPerUcData(const string &filename) {
     std::ifstream file(filename);
     if (file.is_open()) {
@@ -16,7 +19,10 @@ void ScheduleManager::loadClassesPerUcData(const string &filename) {
         std::cerr << "Error: Unable to open file " << filename << std::endl;
     }
 }
-
+/**
+ * @brief Load data from the students' classes file.
+ * @param filename The filename to load data from.
+ */
 void ScheduleManager::loadStudentsClassesData(const string &filename){
     std::ifstream file(filename);
     if (file.is_open()) {
@@ -26,7 +32,10 @@ void ScheduleManager::loadStudentsClassesData(const string &filename){
         std::cerr << "Error: Unable to open file " << filename << std::endl;
     }
 }
-
+/**
+ * @brief Load data from the classes schedule file.
+ * @param filename The filename to load data from.
+ */
 void ScheduleManager::loadClassesScheduleData(const string &filename) {
     std::ifstream file(filename);
     if (file.is_open()) {
@@ -36,7 +45,10 @@ void ScheduleManager::loadClassesScheduleData(const string &filename) {
         std::cerr << "Error: Unable to open file " << filename << std::endl;
     }
 }
-
+/**
+ * @brief Consult a student's schedule by student code.
+ * @param studentCode The code of the student to consult.
+ */
 // Function to consult the schedule of a given student or class
 void ScheduleManager::consultStudentSchedule(const std::string& studentCode) {
     std::cout << "Consulting schedule for Student: " << studentCode << std::endl;
@@ -79,7 +91,10 @@ void ScheduleManager::consultStudentSchedule(const std::string& studentCode) {
     }
 }
 
-
+/**
+ * @brief Consult the schedule of a given class.
+ * @param classCode The code of the class to consult.
+ */
 // Consult the schedule of a given class
 void ScheduleManager::consultClassSchedule(const std::string& classCode) {
     std::cout << "Consulting schedule for Class: " << classCode << std::endl;
@@ -113,7 +128,10 @@ void ScheduleManager::consultClassSchedule(const std::string& classCode) {
         std::cout << "Class not found." << std::endl;
     }
 }
-
+/**
+ * @brief Consult students in a class/course/year.
+ * @param courseOrYear The course or year to query.
+ */
 void ScheduleManager::consultStudentsInClassCourseYear(const std::string& courseOrYear) {
     std::cout << "Consulting students in class/course/year: " << courseOrYear << std::endl;
 
@@ -132,7 +150,10 @@ void ScheduleManager::consultStudentsInClassCourseYear(const std::string& course
     }
     std::cout << "------------------------" << std::endl;
 }
-
+/**
+ * @brief Consult students registered in at least n UCs.
+ * @param n The minimum number of UCs for a student.
+ */
 void ScheduleManager::consultStudentsInAtLeastNUCs(int n) {
     std::cout << "Consulting students registered in at least " << n << " UCs" << std::endl;
 
@@ -150,7 +171,9 @@ void ScheduleManager::consultStudentsInAtLeastNUCs(int n) {
     }
     std::cout << "------------------------" << std::endl;
 }
-
+/**
+ * @brief Consult the UC with the most students.
+ */
 void ScheduleManager::consultUcWithMostStudents() {
     std::cout << "Consulting UCs with the greatest number of students" << std::endl;
 
@@ -162,7 +185,10 @@ void ScheduleManager::consultUcWithMostStudents() {
             ucStudentCount[ucCode.getUcCode()]++;
         }
     }
-
+/**
+ * @brief Consult menu options for further queries.
+ * @return The selected menu option.
+ */
     // Find the UC(s) with the greatest number of students
     int maxStudentCount = 0;
     std::vector<std::string> ucsWithMostStudents;
