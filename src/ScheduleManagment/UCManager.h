@@ -5,8 +5,6 @@
 #ifndef SCHEDULE_UCMANAGER_H
 #define SCHEDULE_UCMANAGER_H
 
-
-#include "StudentsClasses.h"
 #include "ScheduleManager.h"
 
 class UCManager : private ScheduleManager{

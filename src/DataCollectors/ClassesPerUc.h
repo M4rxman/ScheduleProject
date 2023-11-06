@@ -10,7 +10,6 @@
 
 using namespace std;
 
-
 class ClassesPerUc {
     list<UcCode> cPerUc; //ClassesPerUc list
 
