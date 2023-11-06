@@ -1,6 +1,4 @@
 #include <iostream>
-#include "ClassesSchedule.h"
-#include "StudentsClasses.h"
 #include "ScheduleManagment/ScheduleManager.h"
 
 int main() {

@@ -4,8 +4,6 @@
 
 #ifndef SCHEDULE_CLASSESSCHEDULE_H
 #define SCHEDULE_CLASSESSCHEDULE_H
-#include "../ClassesStruct/Schedule.h"
-#include "../ClassesStruct/UcCode.h"
 #include "ClassesPerUc.h"
 
 using namespace std;

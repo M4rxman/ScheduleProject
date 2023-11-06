@@ -7,7 +7,6 @@
 
 #include <string>
 #include "UcCode.h"
-#include "ClassesPerUc.h"
 #include <vector>
 
 using namespace std;
