@@ -26,4 +26,7 @@ add_executable(schedule
         src/DataCollectors/StudentsClasses.cpp
         src/ScheduleManagment/ScheduleManager.h
         src/ScheduleManagment/ScheduleManager.cpp
+        src/ScheduleManagment/UCManager.h
+        src/ScheduleManagment/UCManager.h
+        src/ScheduleManagment/UCManager.cpp
 )

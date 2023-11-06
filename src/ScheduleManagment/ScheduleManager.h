@@ -35,7 +35,6 @@ public:
     int consultMenu();
 
 private:
-    ClassesPerUc classesPerUc;
     StudentsClasses studentsClasses;
     ClassesSchedule classesSchedule;
 
@@ -46,6 +45,9 @@ private:
     void consultStudentsInClassCourseYear(const string &courseOrYear);
     void consultStudentsInAtLeastNUCs(int n);
     void consultUcWithMostStudents();
+
+protected:
+    ClassesPerUc classesPerUc;
 };
 
 

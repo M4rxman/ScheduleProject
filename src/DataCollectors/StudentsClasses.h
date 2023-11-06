@@ -16,6 +16,9 @@ public:
                                 string givenUcCode, string givenClassCode);
     list<Student> getStudents();
 
+    Student *findStudentByCode(const string &basicString);
+
+    bool isStudentInUc(Student student, UcCode ucCode) const;
 };
 
 
