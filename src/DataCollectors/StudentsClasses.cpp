@@ -5,7 +5,9 @@
 #include <iostream>
 #include "StudentsClasses.h"
 #include <fstream>
-
+/**
+ * @brief Print the student data.
+ */
 void StudentsClasses::printData() {
 
     if(student.empty()){
@@ -33,7 +35,10 @@ void StudentsClasses::printData() {
         std::cout << "-----------------------------------" << std::endl;
     }
 }
-
+/**
+ * @brief Read student data from an input file and populate the class.
+ * @param f Input file stream to read student data from.
+ */
 void StudentsClasses::readFile(ifstream &f) {
     string studentCode, studentName, ucCode, classCode, skippingString;
 
@@ -87,7 +92,13 @@ void StudentsClasses::readFile(ifstream &f) {
 
     f.close();
 }
-
+/**
+ * @brief Set a new student with the given information.
+ * @param givenStudentCode The code of the new student.
+ * @param givenStudentName The name of the new student.
+ * @param givenUcCode The UcCode associated with the student.
+ * @param givenClassCode The ClassCode associated with the student.
+ */
 
 void StudentsClasses::setNewStudent(string givenStudentCode, string givenStudentName, string givenUcCode,
                                     string givenClassCode) {{
@@ -104,11 +115,18 @@ void StudentsClasses::setNewStudent(string givenStudentCode, string givenStudent
     }
 
 }
-
+/**
+ * @brief Get a list of students and their class assignments.
+ * @return List of Student objects.
+ */
 list<Student> StudentsClasses::getStudents() {
     return this->student;
 }
-
+/**
+ * @brief Find a student by their code.
+ * @param basicString The code of the student to search for.
+ * @return A pointer to the Student if found, nullptr otherwise.
+ */
 Student *StudentsClasses::findStudentByCode(const string& studentCode) {
     for (Student& student_singular : student) {
         if (student_singular.getStudentCode() == studentCode) {
@@ -117,7 +135,12 @@ Student *StudentsClasses::findStudentByCode(const string& studentCode) {
     }
     return nullptr; // Return nullptr if the student is not found
 }
-
+/**
+ * @brief Check if a student is assigned to a specific UcCode.
+ * @param student The Student object to check.
+ * @param ucCode The UcCode to compare with.
+ * @return True if the student is assigned to the UcCode, false otherwise.
+ */
 bool StudentsClasses::isStudentInUc(Student student, UcCode ucCode) const {
     for (Student s : this->student) {
         // Find the student by their unique identifier (e.g., student code)

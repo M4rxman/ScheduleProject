@@ -1,5 +1,10 @@
 #include "UCManager.h"
-
+/**
+ * @brief Add a student to a UC (Course).
+ * @param studentCode The code of the student to be added.
+ * @param ucCode The code of the UC (Course) to add the student to.
+ * @return True if the addition was successful, false otherwise.
+ */
 bool UCManager::addStudentToUC(const std::string& studentCode, const std::string& ucCode) {
     // Find the student in the StudentsClasses data
     Student* student = studentsClasses.findStudentByCode(studentCode);
@@ -25,7 +30,12 @@ bool UCManager::addStudentToUC(const std::string& studentCode, const std::string
         return false;
     }
 }
-
+/**
+ * @brief Remove a student from a UC (Course).
+ * @param studentCode The code of the student to be removed.
+ * @param ucCode The code of the UC (Course) to remove the student from.
+ * @return True if the removal was successful, false otherwise.
+ */
 bool UCManager::removeStudentFromUC(const std::string& studentCode, const std::string& ucCode) {
     // Find the student in the StudentsClasses data
     Student* student = studentsClasses.findStudentByCode(studentCode);
@@ -51,7 +61,13 @@ bool UCManager::removeStudentFromUC(const std::string& studentCode, const std::s
         return false;
     }
 }
-
+/**
+ * @brief Switch a student from one UC to another.
+ * @param studentCode The code of the student to be switched.
+ * @param oldUCCode The code of the current UC.
+ * @param newUCCode The code of the new UC.
+ * @return True if the switch was successful, false otherwise.
+ */
 bool UCManager::switchStudentUC(const std::string& studentCode, const std::string& oldUCCode, const std::string& newUCCode) {
     // Find the student in the StudentsClasses data
     Student* student = studentsClasses.findStudentByCode(studentCode);
@@ -80,7 +96,12 @@ bool UCManager::switchStudentUC(const std::string& studentCode, const std::strin
         return false;
     }
 }
-
+/**
+ * @brief Check if it's possible to add a student to a UC.
+ * @param student The student object to add.
+ * @param ucCode The UC code to add the student to.
+ * @return True if the addition is allowed, false otherwise.
+ */
 bool UCManager::canAddStudentToUC(Student& student, UcCode ucCode) {
     // Constraint 1: A student cannot be registered in more than 7 UCs at any given time
     bool return_answer = false;
@@ -109,7 +130,12 @@ bool UCManager::canAddStudentToUC(Student& student, UcCode ucCode) {
     // Return true if all constraints are met
     return true;
 }
-
+/**
+ * @brief Check if it's possible to remove a student from a UC.
+ * @param student The student object to remove.
+ * @param ucCode The UC code to remove the student from.
+ * @return True if the removal is allowed, false otherwise.
+ */
 bool UCManager::canRemoveStudentFromUC(Student& student, UcCode& ucCode) {
     // Rule 1: A student cannot be in more than one class at once for a given UC
     if (!studentsClasses.isStudentInUc(student, ucCode)) {
@@ -118,6 +144,13 @@ bool UCManager::canRemoveStudentFromUC(Student& student, UcCode& ucCode) {
     return false; // The student is not in any class for this UC, so they cannot be removed
 }
 
+/**
+ * @brief Check if it's possible to switch a student from one UC to another.
+ * @param student The student object to switch.
+ * @param oldUCCode The code of the current UC.
+ * @param newUCCode The code of the new UC.
+ * @return True if the switch is allowed, false otherwise.
+ */
 bool UCManager::canSwitchStudentUC(Student& student, UcCode& oldUCCode, UcCode& newUCCode) {
     // Rule 1: A student cannot be in more than one class at once for a given UC
     if (!studentsClasses.isStudentInUc(student, oldUCCode)) {

@@ -7,7 +7,11 @@
 #include <map>
 #include <iomanip>
 #include "ClassesSchedule.h"
-
+/**
+ * @brief Read data from an input file and populate the class, using information from ClassesPerUc.
+ * @param f Input file stream to read data from.
+ * @param classesPerUc Reference to a ClassesPerUc object for additional information.
+ */
 
 void ClassesSchedule::readFile(ifstream &f, ClassesPerUc& classesPerUc) {
     string ucCode, stringClassCode, weekday, startHour, duration, type,
@@ -40,7 +44,10 @@ void ClassesSchedule::readFile(ifstream &f, ClassesPerUc& classesPerUc) {
 
     f.close();
 }
-
+/**
+ * @brief Print the data in the schedule, using information from ClassesPerUc.
+ * @param classesPerUc Reference to a ClassesPerUc object for additional information.
+ */
 void ClassesSchedule::printData(ClassesPerUc& classesPerUc) {
     for (UcCode &ucCodeClass : classesPerUc.getClassesPerUc()) {
         std::cout << "UcCode: " << ucCodeClass.getUcCode() << std::endl;
@@ -85,7 +92,10 @@ void ClassesSchedule::printData(ClassesPerUc& classesPerUc) {
         std::cout << "########" + ucCodeClass.getUcCode() + "########" <<  std::endl;
     }
 }
-
+/**
+ * @brief Get a list of UcCode objects associated with ClassCodes in the schedule.
+ * @return List of UcCode objects with associated ClassCodes.
+ */
 list<UcCode> ClassesSchedule::getUcClassCodes() {
     return this->ucCodeClassCode;
 }
